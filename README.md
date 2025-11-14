@@ -1,5 +1,5 @@
 # Exp-5-Design-and-Simulate the-Memory-Design-using-Verilog-HDL
-#Aim
+# Aim
 To design and simulate a RAM,ROM,FIFO using Verilog HDL, and verify its functionality through a testbench in the Vivado 2023.1 environment.
 Apparatus Required
 Vivado 2023.1
@@ -75,36 +75,36 @@ module mem_1kb_ram_tb;
 endmodule
 ```
 
-// output Waveform
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1778f718-5ec5-4fe8-8fee-a5026c6c7ad9" />
+# output Waveform
+<img width="1919" height="1079" alt="Screenshot 2025-10-22 082123" src="https://github.com/user-attachments/assets/1ee407bc-f5c5-466e-8da5-9b9e668bf0f4" />
+
 
 
 # ROM
- // write verilog code for ROM using $
+ // write verilog code for ROM 
  ```
 module mem_1kb_rom(input clk,rst,
-   input [9:0]address,
-   output reg [7:0]dataout
- );
-   reg [7:0] mem_1kb_rom[1023:0];
-   integer i;
-   initial
-       begin
-           for(i=0;i<1024;i=i+1)
-               mem_1kb_rom[i] = $random;
-           end
-    always@(posedge clk)
-       begin
-           if(rst)
-               dataout <= 8'b0;
-           else
-               dataout <= mem_1kb_rom[address];
-         end
+    input [9:0]address,
+    output reg [7:0]dataout
+  );
+    reg [7:0] mem_1kb_rom[1023:0];
+    integer i;
+    initial
+        begin
+            for(i=0;i<1024;i=i+1)
+                mem_1kb_rom[i] = $random;
+            end
+     always@(posedge clk)
+        begin
+            if(rst)
+                dataout <= 8'b0;
+            else
+                dataout <= mem_1kb_rom[address];
+          end
 endmodule
 ```
- 
  // Test bench
- ```
+```
 module mem_1kb_rom_tb;
     reg clk_t,rst_t;
     reg [9:0]address_t;
@@ -128,14 +128,12 @@ module mem_1kb_rom_tb;
         #10 clk_t = ~clk_t;   
 endmodule
 ```
-
-// output Waveform
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/75afa96f-eed5-4549-b6c9-46a5af223be4" />
-
+# output Waveform
+<img width="1919" height="1079" alt="Screenshot 2025-10-22 084959" src="https://github.com/user-attachments/assets/a019ca4b-19fd-4dc3-8185-f7e8749ecce1" />
 
  # FIFO
  // write verilog code for FIFO
- ```
+```
 module synchronous_fifo #(parameter DEPTH=8, DATA_WIDTH=8) (
  input clk, rst_n,
  input w_en, r_en,
@@ -177,7 +175,7 @@ endmodule
 ```
  
  // Test bench
- ```
+```
 module synchronous_fifo_tb;
 reg clk_t, rst_t;
 reg w_en_t, r_en_t;
@@ -211,14 +209,12 @@ data_in_t = 8'd0;
 end
 endmodule
 ```
+# output Waveform
 
-// output Waveform
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bd29cca5-f0c8-4506-9ebe-7a107fd13f5b" />
-
-
-
+<img width="1919" height="1079" alt="Screenshot 2025-10-22 085335" src="https://github.com/user-attachments/assets/56b2fa38-570b-41ed-a59d-37dc156d0595" />
 
 # Conclusion
+
 The RAM, ROM, FIFO memory with read and write operations was designed and successfully simulated using Verilog HDL. The testbench verified both the write and read functionalities by simulating the memory operations and observing the output waveforms. The experiment demonstrates how to implement memory operations in Verilog, effectively modeling both the reading and writing processes.
  
  
